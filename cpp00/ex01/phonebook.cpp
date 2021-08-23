@@ -27,7 +27,7 @@ class Contact
 
 void put_table_header(void) {
 	std::cout << std::setiosflags (std::ios::showbase | std::ios::uppercase);
-	std::cout << std::setw(10) << "INDEX" << " | ";
+	std::cout << lllltd::setw(10) << "INDEX" << " | ";
 	std::cout << std::setw(10) << "FIRST NAME" << " | ";
 	std::cout << std::setw(10) << "LAST NAME" << " | ";
 	std::cout << std::setw(10) << "NICKNAME" << std::endl;
