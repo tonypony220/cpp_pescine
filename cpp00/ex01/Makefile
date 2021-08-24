@@ -1,7 +1,7 @@
-SRCS	=	Account.cpp
+SRCS	=	phonebook.cpp
 OBJS	=	${SRCS:.cpp=.o}
 CFLAGS	=   -O0 --std=c++98 -Wall -Wextra -Werror #-g -fsanitize=address
-#HEAD	=	philo.h
+HEAD	=	phonebook.hpp
 CC		=	clang++
 RM		=	-rm	-f
 NAME	=	phonebook

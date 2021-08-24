@@ -1,33 +1,8 @@
-#include <iostream>
-#include <iomanip>
-#include <unistd.h>
-
-#define BOOK_SIZE 8
-
-class Contact 
-{
-	int idx;
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
-
-  public:
-    int setting(int i);
-   	void display();	 
-	void display_full(void);
-	int	exists() { 
-		return (first_name.size() || 
-				last_name.size() || 
-				nickname.size() || 
-				phone_number.size()); 
-	}
-};
+#include "phonebook.hpp"
 
 void put_table_header(void) {
 	std::cout << std::setiosflags (std::ios::showbase | std::ios::uppercase);
-	std::cout << lllltd::setw(10) << "INDEX" << " | ";
+	std::cout << std::setw(10) << "INDEX" << " | ";
 	std::cout << std::setw(10) << "FIRST NAME" << " | ";
 	std::cout << std::setw(10) << "LAST NAME" << " | ";
 	std::cout << std::setw(10) << "NICKNAME" << std::endl;
@@ -108,9 +83,9 @@ int main()
 	PhoneBook phones;
 
 	while (std::getline(std::cin, cmd)) {
-		(!cmd.compare("ADD") || !cmd.compare("add")) && phones.add(i++);
-		(!cmd.compare("SEARCH") || !cmd.compare("search")) && phones.search();
-		(!cmd.compare("EXIT") || !cmd.compare("exit")) && exiting();
+		(!cmd.compare("ADD") || (!cmd.compare("add") && LOWER)) && phones.add(i++);
+		(!cmd.compare("SEARCH") || (!cmd.compare("search") && LOWER)) && phones.search();
+		(!cmd.compare("EXIT") || (!cmd.compare("exit") && LOWER)) && exiting();
 	}
 	/* cmd = "sssssssssssssssssssssttttttttttt"; */
 

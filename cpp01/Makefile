@@ -1,10 +1,10 @@
-SRCS	=	Account.cpp  tests.cpp #main.cpp
+SRCS	=   main.cpp Zombie.cpp newZombie.cpp randomChump.cpp	
 OBJS	=	${SRCS:.cpp=.o}
-CFLAGS	=   -O0 --std=c++98 -Wall -Wextra -Werror #-g -fsanitize=address
-HEAD	=	Account.hpp
+CFLAGS	=   -O0 -Wall -Wextra -Werror #-g -fsanitize=address
 CC		=	clang++
 RM		=	-rm	-f
-NAME	=	test
+HEAD	=	Zombie.hpp
+NAME	=	brainz
 
 %.o: %.cpp $(HEAD)
 	$(CC) ${CFLAGS} -c $< -o ${<:.cpp=.o}
