@@ -1,11 +1,11 @@
-#include "Weapon.hpp"
 
 #ifndef __HUMAN_B_H__
 # define __HUMAN_B_H__
+# include "Weapon.hpp"
 
 class HumanB {
   private:
-	Weapon gun;
+	Weapon * gun;
 	std::string name;
 	HumanB();	
 
