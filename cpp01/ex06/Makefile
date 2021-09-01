@@ -1,10 +1,10 @@
-SRCS	=   main.cpp
+SRCS	=   main.cpp Karen.cpp
 OBJS	=	${SRCS:.cpp=.o}
-CFLAGS	=   -O0 -Wall -Wextra -Werror --std=c++98 # -fsanitize=address
+CFLAGS	=   -O0 -Wall -Wextra -Werror --std=c++98 --std=c++98 # -fsanitize=address
 CC		=	clang++
 RM		=	-rm	-f
-HEAD	=	
-NAME	=	brainz
+HEAD	=	Karen.hpp 
+NAME	=	karenFilter
 
 %.o: %.cpp $(HEAD)
 	$(CC) ${CFLAGS} -c $< -o ${<:.cpp=.o}
