@@ -9,7 +9,7 @@ int main( void ) {
 	
 	randomChump( "someguy" );
 	
-	p = new newZombie( "new" );	
+	p = new Zombie( "new" );	
 	p->announce();
 	delete p;
 

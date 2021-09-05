@@ -2,8 +2,8 @@
 
 int main ( void ) {
 	Karen k;
-	k.complain( "info" );
-	k.complain( "debug" );
-	k.complain( "warning" );
-	k.complain( "error" );
+	k.complain( "INFO" );
+	k.complain( "DEBUG" );
+	k.complain( "WARNING" );
+	k.complain( "ERROR" );
 }

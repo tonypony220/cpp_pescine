@@ -19,7 +19,7 @@ class Karen {
 		void warning( void );
 		void error( void );
 	public:
-  		const static std::string levels[4]; 
+  		const static std::string levels[]; 
 		void complain( std::string level );	
 		void set_level( std::string level );	
 		LVL get_level_idx ( std::string level );

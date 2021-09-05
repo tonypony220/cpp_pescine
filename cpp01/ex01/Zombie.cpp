@@ -5,7 +5,7 @@ Zombie::Zombie( std::string name ) {
 }
 
 Zombie::Zombie() {
-	std::cout << _name << " creating zombie" << std::endl;
+	std::cout << _name << "creating zombie" << std::endl;
 }
 
 Zombie::~Zombie() {

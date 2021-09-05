@@ -19,7 +19,7 @@ void Karen::complain( std::string level ) {
 
   /* PTR pmf[4]= {&Karen::debug, &Karen::info, &Karen::warning, &Karen::error}; */
   void ( Karen::*pmf[4] ) ( void ) = {&Karen::debug, &Karen::info, &Karen::warning, &Karen::error};
-  std::string strs[4] = {"debug", "info", "warning", "error"};
+  std::string strs[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
   for (int i = 0; i < 4; i++)
 	if (!strs[i].compare(level))

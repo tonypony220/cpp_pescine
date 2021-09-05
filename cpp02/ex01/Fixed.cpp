@@ -5,6 +5,14 @@ Fixed::Fixed() {
 	std::cout << "Default constructor called" << std::endl;
 }	
 
+Fixed::Fixed( int digit ) {
+	raw_value = digit << fractional_bits;
+}
+
+Fixed::Fixed( float digit ) {
+	raw_value = digit;
+}
+
 Fixed::~Fixed( void ) {
 	std::cout << "destructor called" << std::endl;
 }	
@@ -32,4 +40,5 @@ void  Fixed::setRawBits( int const raw ) {
 	raw_value = raw;
 	std::cout << "setRawBits member function called" << std::endl;
 }
+
 

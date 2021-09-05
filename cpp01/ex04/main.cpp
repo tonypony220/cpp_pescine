@@ -46,7 +46,8 @@ int main (int ac, char **argv)
 
 	replace( str, s1, s2 );
 
-	std::ofstream out( filename.append( ".replace" ));
+	std::ofstream out( filename.append( ".replace" ) );
+	/* std::cout << out << "<< OUT\n"; */
 	out << str;
 
 	/* std::cout << str << std::endl; */

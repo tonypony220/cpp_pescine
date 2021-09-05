@@ -20,7 +20,7 @@ LVL Karen::get_level_idx ( std::string level ) {
   return NOTHING;
 }
 
-const static std::string Karen::levels = {"DEBUG", "INFO", "WARNING", "ERROR"};
+const std::string Karen::levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 /* typedef void(Karen::*PTR) ( void ); */
 
 void Karen::complain( std::string level ) {
