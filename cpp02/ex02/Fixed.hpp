@@ -19,6 +19,18 @@ class Fixed {
 
 	const Fixed & operator=( const Fixed & other );	
 
+	const Fixed & operator>( const Fixed & other );	
+	const Fixed & operator>=( const Fixed & other );	
+	const Fixed & operator<( const Fixed & other );	
+	const Fixed & operator<=( const Fixed & other );	
+	const Fixed & operator==( const Fixed & other );	
+	const Fixed & operator!=( const Fixed & other );	
+
+	
+	const Fixed & operator+( const Fixed & other );	
+	const Fixed & operator-( const Fixed & other );	
+	const Fixed & operator*( const Fixed & other );	
+	const Fixed & operator/( const Fixed & other );	
 
 	Fixed( const Fixed & copy );	
 

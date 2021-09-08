@@ -1,0 +1,7 @@
+https://stackoverflow.com/questions/6536805/initializing-a-static-const-array-of-const-strings-in-c
+
+link from subject  01: {
+https://www.cprogramming.com/tutorial/c++-tutorial.html?inl=pf
+fixed 
+https://inst.eecs.berkeley.edu//~cs61c/sp06/handout/fixedpt.html
+}

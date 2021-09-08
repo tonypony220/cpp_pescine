@@ -36,6 +36,24 @@ const Fixed & Fixed::operator=( const Fixed & other ) {
 	return (*this);
 }
 
+/* we has const fractional bits(q), so this merging of q's not impolemented */ 
+
+/* int32_t a = 0x1000L;    // q15: a = 0.125 */
+/* int32_t b = 0x20000L;   // q20: b = 0.125 */
+/* int32_t c = 0;          // q25 */
+/* c = (a << 5) + b;       // q20: (a * 2 ^ (20 - 15) + b); c = 0x40000L (0.25 в q20) */
+/* c <<= 5;                // q25: c = 0x800000L (0.25 в q25) */
+
+Fixed 		  Fixed::operator+( const Fixed & other ) {
+	return Fixed( raw_value + other.getRawBits());	
+}
+
+Fixed 		  Fixed::operator-( const Fixed & other ) {
+	return Fixed( raw_value - other.getRawBits());	
+}
+
+
+
 float Fixed::toFloat( void ) const {
 	float digit = static_cast<float>(raw_value);
 	return digit / (1 << fractional_bits);
