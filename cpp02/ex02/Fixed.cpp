@@ -2,37 +2,31 @@
 
 Fixed::Fixed() {
 	raw_value = 0;
-	std::cout << "Default constructor called" << std::endl;
 }	
 
 Fixed::Fixed( int digit ) {
-	std::cout << "Int constructor called" << std::endl;
 	raw_value = digit << fractional_bits;
 }
 
 /* https://ee.sharif.edu/~asic/Tutorials/Fixed-Point.pdf */
 Fixed::Fixed( float digit ) {
-	std::cout << "Float constructor called" << std::endl;
 	digit *= (1 << fractional_bits);
-	digit = std::roundf(digit);
-	raw_value = static_cast<int>(digit);
+	digit = std::roundf( digit );
+	raw_value = static_cast<int>( digit );
 }
 
 Fixed::~Fixed( void ) {
-	std::cout << "Destructor called" << std::endl;
 }	
 
 Fixed::Fixed( const Fixed & original_obj ) {
 	/* raw_value = original_obj.getRawBits(); */
 	raw_value = original_obj.raw_value; //<--- access other private attrs 
-	std::cout << "Copy constructor called" << std::endl;
 }
 
 /* const return object protects from things like this: (v1 += v2) = v3; */
 /* https://stackoverflow.com/questions/21778045/c-return-value-reference-const-reference/21778496 */
 const Fixed & Fixed::operator=( const Fixed & other ) {
 	raw_value = other.raw_value; // <--- access other private attrs 
-	std::cout << "Assignation operator called" << std::endl;
 	return (*this);
 }
 
@@ -53,6 +47,79 @@ Fixed 		  Fixed::operator-( const Fixed & other ) {
 }
 
 
+Fixed		  Fixed::operator*( const Fixed & other ) {
+	long res = 0;
+	Fixed n;
+	res = static_cast<long>( raw_value ) * static_cast<long>( other.getRawBits() );
+	n.setRawBits( static_cast<int>(res >> fractional_bits) );
+	return n;	
+}
+
+Fixed		  Fixed::operator/( const Fixed & other ) {
+	long tmp = 0;
+	Fixed n;
+	tmp = (static_cast<long>( raw_value )) << fractional_bits;
+	n.setRawBits( static_cast<int>( tmp / static_cast<long>(other.getRawBits()) ) );
+	return n;	
+}
+
+bool		  Fixed::operator>( const Fixed & other ) const {
+	return raw_value > other.getRawBits();	
+}
+
+bool		  Fixed::operator<( const Fixed & other ) const {
+	return raw_value < other.getRawBits();	
+}
+
+bool		  Fixed::operator<=( const Fixed & other ) {
+	return raw_value <= other.getRawBits();	
+}
+
+bool		  Fixed::operator>=( const Fixed & other ) {
+	return raw_value >= other.getRawBits();	
+}
+
+bool		  Fixed::operator==( const Fixed & other ) {
+	return raw_value == other.getRawBits();	
+}
+
+bool		  Fixed::operator!=( const Fixed & other ) {
+	return raw_value != other.getRawBits();	
+}
+
+const Fixed & Fixed::operator++() { 
+	raw_value++;
+	return *this;		
+}
+
+const Fixed & Fixed::operator--() { 
+	raw_value--;
+	return *this;		
+}
+
+Fixed 		  Fixed::operator++(int) {	
+	Fixed tmp(*this);
+	raw_value++;
+	return tmp;
+}
+
+Fixed 		  Fixed::operator--(int) {	
+	Fixed tmp(*this);
+	raw_value--;
+	return tmp;
+}
+
+const Fixed &  Fixed::min( const Fixed & a , const Fixed & b ) {
+	if ( a < b ) 
+		return a;
+	return b;
+}
+
+const Fixed &  Fixed::max( const Fixed & a , const Fixed & b ) {
+	if ( a > b ) 
+		return a;
+	return b;
+}
 
 float Fixed::toFloat( void ) const {
 	float digit = static_cast<float>(raw_value);
@@ -69,13 +136,11 @@ std::ostream & operator<<( std::ostream & o, const Fixed & fixed ) {
 }	
 
 int  Fixed::getRawBits( void ) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return raw_value;
 }
 
 void  Fixed::setRawBits( int const raw ) {
 	raw_value = raw;
-	std::cout << "setRawBits member function called" << std::endl;
 }
 
 

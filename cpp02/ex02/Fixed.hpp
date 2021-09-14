@@ -17,32 +17,41 @@ class Fixed {
 
 	Fixed();	
 
-	const Fixed & operator=( const Fixed & other );	
-
-	const Fixed & operator>( const Fixed & other );	
-	const Fixed & operator>=( const Fixed & other );	
-	const Fixed & operator<( const Fixed & other );	
-	const Fixed & operator<=( const Fixed & other );	
-	const Fixed & operator==( const Fixed & other );	
-	const Fixed & operator!=( const Fixed & other );	
-
-	
-	const Fixed & operator+( const Fixed & other );	
-	const Fixed & operator-( const Fixed & other );	
-	const Fixed & operator*( const Fixed & other );	
-	const Fixed & operator/( const Fixed & other );	
-
 	Fixed( const Fixed & copy );	
 
 	~Fixed( void );	
 
-	int getRawBits( void ) const;
+	const Fixed & operator=( const Fixed & other );	
 
-	void setRawBits( int const raw );
+	bool 		  operator>( const Fixed & other ) const ;	
+	bool 		  operator>=( const Fixed & other ) const ;	
+	bool 		  operator<( const Fixed & other ) const ;	
+	bool 		  operator<=( const Fixed & other ) const ;	
+	bool 		  operator==( const Fixed & other ) const ;	
+	bool 		  operator!=( const Fixed & other ) const ;	
+	
+	Fixed		  operator+( const Fixed & other );	
+	Fixed 		  operator-( const Fixed & other );	
+	Fixed 		  operator*( const Fixed & other );	
+	Fixed 		  operator/( const Fixed & other );	
+	
+	static const Fixed & min( const Fixed & a , const Fixed & b );	
+	static const Fixed & max( const Fixed & a , const Fixed & b );	
 
-	float toFloat( void ) const;
+	/* prefix */ 
+	const Fixed & operator++();	
+	const Fixed & operator--();	
+	/* postfixt */ 
+	Fixed 		  operator++( int );	
+	Fixed 		  operator--( int );	
 
-	int toInt( void ) const;
+	int		getRawBits( void ) const;
+
+	void 	setRawBits( int const raw );
+
+	float 	toFloat( void ) const;
+
+	int 	toInt( void ) const;
 
 };
 
