@@ -15,11 +15,10 @@ Fixed::Fixed( float digit ) {
 	raw_value = static_cast<int>( digit );
 }
 
-Fixed::~Fixed( void ) {
-}	
+Fixed::~Fixed( void ) {}	
 
+/* copy constructor */
 Fixed::Fixed( const Fixed & original_obj ) {
-	/* raw_value = original_obj.getRawBits(); */
 	raw_value = original_obj.raw_value; //<--- access other private attrs 
 }
 
@@ -38,16 +37,20 @@ const Fixed & Fixed::operator=( const Fixed & other ) {
 /* c = (a << 5) + b;       // q20: (a * 2 ^ (20 - 15) + b); c = 0x40000L (0.25 в q20) */
 /* c <<= 5;                // q25: c = 0x800000L (0.25 в q25) */
 
-Fixed 		  Fixed::operator+( const Fixed & other ) {
-	return Fixed( raw_value + other.getRawBits());	
+Fixed 		  Fixed::operator+( const Fixed & other ) const {
+	Fixed n;
+	n.setRawBits( raw_value + other.getRawBits());
+	return n;	
 }
 
-Fixed 		  Fixed::operator-( const Fixed & other ) {
-	return Fixed( raw_value - other.getRawBits());	
+Fixed 		  Fixed::operator-( const Fixed & other ) const {
+	Fixed n;
+	n.setRawBits( raw_value - other.getRawBits());
+	return n;	
 }
 
 
-Fixed		  Fixed::operator*( const Fixed & other ) {
+Fixed		  Fixed::operator*( const Fixed & other ) const {
 	long res = 0;
 	Fixed n;
 	res = static_cast<long>( raw_value ) * static_cast<long>( other.getRawBits() );
@@ -55,7 +58,7 @@ Fixed		  Fixed::operator*( const Fixed & other ) {
 	return n;	
 }
 
-Fixed		  Fixed::operator/( const Fixed & other ) {
+Fixed		  Fixed::operator/( const Fixed & other ) const {
 	long tmp = 0;
 	Fixed n;
 	tmp = (static_cast<long>( raw_value )) << fractional_bits;
@@ -71,19 +74,19 @@ bool		  Fixed::operator<( const Fixed & other ) const {
 	return raw_value < other.getRawBits();	
 }
 
-bool		  Fixed::operator<=( const Fixed & other ) {
+bool		  Fixed::operator<=( const Fixed & other ) const {
 	return raw_value <= other.getRawBits();	
 }
 
-bool		  Fixed::operator>=( const Fixed & other ) {
+bool		  Fixed::operator>=( const Fixed & other ) const {
 	return raw_value >= other.getRawBits();	
 }
 
-bool		  Fixed::operator==( const Fixed & other ) {
+bool		  Fixed::operator==( const Fixed & other ) const {
 	return raw_value == other.getRawBits();	
 }
 
-bool		  Fixed::operator!=( const Fixed & other ) {
+bool		  Fixed::operator!=( const Fixed & other ) const {
 	return raw_value != other.getRawBits();	
 }
 

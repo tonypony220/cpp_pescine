@@ -1,9 +1,9 @@
-SRCS	=   main.cpp Fixed.cpp
+SRCS	=   main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJS	=	${SRCS:.cpp=.o}
 CFLAGS	=   -O0 -Wall -Wextra -Werror --std=c++98 # -fsanitize=address
 CC		=	clang++
 RM		=	-rm	-f
-HEAD	=	Fixed.hpp 
+HEAD	=	Fixed.hpp  Point.hpp
 NAME	=	out
 
 %.o: %.cpp $(HEAD)

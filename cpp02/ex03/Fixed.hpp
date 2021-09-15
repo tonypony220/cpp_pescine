@@ -21,19 +21,19 @@ class Fixed {
 
 	~Fixed( void );	
 
-	const Fixed & operator=( const Fixed & other );	
+	const Fixed & operator=( const Fixed & other ) ;	
 
-	bool 		  operator>( const Fixed & other ) const ;	
+	bool 		  operator>(  const Fixed & other ) const ;	
 	bool 		  operator>=( const Fixed & other ) const ;	
-	bool 		  operator<( const Fixed & other ) const ;	
+	bool 		  operator<(  const Fixed & other ) const ;	
 	bool 		  operator<=( const Fixed & other ) const ;	
 	bool 		  operator==( const Fixed & other ) const ;	
 	bool 		  operator!=( const Fixed & other ) const ;	
 	
-	Fixed		  operator+( const Fixed & other );	
-	Fixed 		  operator-( const Fixed & other );	
-	Fixed 		  operator*( const Fixed & other );	
-	Fixed 		  operator/( const Fixed & other );	
+	Fixed		  operator+( const Fixed & other ) const ;
+	Fixed 		  operator-( const Fixed & other ) const ;
+	Fixed 		  operator*( const Fixed & other ) const ;
+	Fixed 		  operator/( const Fixed & other ) const ;
 	
 	static const Fixed & min( const Fixed & a , const Fixed & b );	
 	static const Fixed & max( const Fixed & a , const Fixed & b );	
