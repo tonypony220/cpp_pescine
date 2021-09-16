@@ -31,6 +31,7 @@ ClapTrap::ClapTrap( std::string name,
 	std::cout << "ClapTrap: Constructor called" << std::endl;
 }
 
+
 ClapTrap::ClapTrap( const ClapTrap & copy ) {
 
 	std::cout << "ClapTrap: Copy constructor called" << std::endl;

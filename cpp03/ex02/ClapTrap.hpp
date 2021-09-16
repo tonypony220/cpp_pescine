@@ -22,7 +22,6 @@ class ClapTrap {
 			  unsigned int dmg = 0
 	);
 
-
 	ClapTrap( const ClapTrap & copy );	
 
 	~ClapTrap( void );	

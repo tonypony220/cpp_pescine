@@ -1,8 +1,9 @@
-#include "ClapTrap.hpp"
+#include "FlagTrap.hpp"
 
 int main () { 
-	ClapTrap c( "clap" );
+	FlagTrap c( "clap" );
 	c.attack( "another" );		
 	c.beRepaired( 20 );		
 	c.takeDamage( 20 );		
+	c.highFivesGuys();
 }
