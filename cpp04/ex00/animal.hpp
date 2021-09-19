@@ -19,16 +19,45 @@ class Animal {
 
 class Dog : public Animal {
 	public:
-		Dog( void ) : Animal() {type = "Dog";};
+		Dog( void );
 		virtual ~Dog( void ) {}
 		void virtual makeSound() const ;
 };
 
 class Cat : public Animal {
 	public:
-		Cat( void ) : Animal() { type ="Cat";};
+		Cat( void );
 		virtual ~Cat( void ) {}
 		void virtual makeSound() const ;
+};
+
+class WrongAnimal {
+
+  protected:
+	std::string type;
+
+  public:
+	WrongAnimal();	
+	std::string getType() const ;
+	WrongAnimal( const WrongAnimal & copy );	
+	~WrongAnimal( void );	
+	const WrongAnimal & operator=( const WrongAnimal & other );	
+
+	void makeSound() const ;
+};
+
+class WrongDog : public WrongAnimal {
+	public:
+		WrongDog( void );
+		~WrongDog( void ) {}
+		void makeSound() const ;
+};
+
+class WrongCat : public WrongAnimal {
+	public:
+		WrongCat( void );
+		~WrongCat( void ) {}
+		void makeSound() const ;
 };
 
 #endif
