@@ -9,27 +9,26 @@ class Animal {
 
   public:
 	Animal();	
-	std::string getType();
+	std::string getType() const ;
 	Animal( const Animal & copy );	
-	~Animal( void );	
+	virtual ~Animal( void );	
 	const Animal & operator=( const Animal & other );	
 
-	void makeSound();
+	void virtual makeSound() const ;
 };
 
 class Dog : public Animal {
-	private:
-		std::string sound;
 	public:
-		Dog( void ) : Animal(), type("Dog"), sound("woof") {};
+		Dog( void ) : Animal() {type = "Dog";};
+		virtual ~Dog( void ) {}
+		void virtual makeSound() const ;
 };
 
 class Cat : public Animal {
-	private:
-		std::string sound;
 	public:
-		Cat( void ) : Animal(), type("Cat"), sound("meeew") {};
-	
+		Cat( void ) : Animal() { type ="Cat";};
+		virtual ~Cat( void ) {}
+		void virtual makeSound() const ;
 };
 
 #endif

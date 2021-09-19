@@ -1,6 +1,6 @@
-#include "Animal.hpp"
+#include "animal.hpp"
 
-Animal::Animal( ) {}
+Animal::Animal( void ) {}
 
 Animal::Animal( const Animal & copy ) { *this = copy; }
 
@@ -10,6 +10,10 @@ const Animal & Animal::operator=( const Animal & other ) {
 }
 
 Animal::~Animal( void ) {}
+void Animal::makeSound( void ) const { std::cout << "abstract sound" << std::endl; }
+void Dog::makeSound( void )  const{ std::cout << "woof" << std::endl; }
+void Cat::makeSound( void ) const { std::cout << "meeow" << std::endl; }
 
-void Animal::makeSound( void ) { std::cout << "" << std::endl; }
-
+std::string Animal::getType( void ) const {
+	return type;
+}
