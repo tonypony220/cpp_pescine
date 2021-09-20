@@ -19,7 +19,7 @@ class Animal {
 	virtual ~Animal( void );	
 	virtual const Animal & operator=( const Animal & other );	
 
-	void virtual makeSound() const ;
+	void virtual makeSound() const = 0 ;
 };
 
 class Dog : public Animal {

@@ -9,6 +9,7 @@ int main(int ac, char **av)
 
 	if (ac < 2 && std::cout << '\a')
 		return (1);
+
 	for (int x = 1; x < ac; x++) { 
 		str = av[x];
 		for (int i=0; i < static_cast<int>(str.length()); ++i)
