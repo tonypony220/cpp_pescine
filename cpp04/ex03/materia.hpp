@@ -20,16 +20,20 @@ class AMateria {
 
 class Ice : public AMateria {
 	public:
+		/* std::string getType() const { return Ice::type; }; */
+		Ice( void );
 		virtual Ice* clone() const ;
 		virtual void use( ICharacter & target );
 		virtual ~Ice( void ) {}	
 };
 
-/* class Cure : public AMateria { */
-/* 	public: */
-/* 		virtual Cure* clone(); */
-/* 		virtual void use( ICharacter & target ); */
-/* 		virtual ~Cure( void ); */	
-/* }; */
+class Cure : public AMateria {
+	public:
+		Cure( void );
+		virtual Cure* clone() const ;
+		virtual void use( ICharacter & target );
+		virtual ~Cure( void ) {};	
+};
+
 
 #endif

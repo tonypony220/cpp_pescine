@@ -1,4 +1,4 @@
-SRCS	=   materia.cpp  main.cpp
+SRCS	=   materia.cpp ichar.cpp main.cpp
 OBJS	=	${SRCS:.cpp=.o}
 CFLAGS	=   -O0 -Wall -Wextra -Werror --std=c++98 # -fsanitize=address
 CC		=	clang++

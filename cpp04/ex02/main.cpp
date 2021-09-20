@@ -15,6 +15,7 @@ int main()
 			arr[i] = new Cat();
 		}
 		arr[i]->makeSound();
+		arr[i]->get_brain();
 	}
 	for ( size_t i = 0; i < 10; i++ ) {
 		delete arr[i];
