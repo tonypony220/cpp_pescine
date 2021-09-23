@@ -13,6 +13,9 @@ std::string AMateria::getType( void ) const {
 	return type;
 }
 
+
+AMateria::~AMateria( void )	{}
+
 AMateria::AMateria( std::string const & type ) {
 	this->type = type;
 }
@@ -31,12 +34,16 @@ AMateria::AMateria( const AMateria & copy ) {
 	*this = copy; 
 }
 
+/* materia derivates */ 
+
 Ice::Ice( void ) {
 	type = "ice";
 }
 
+Ice::~Ice( void ) {}
+
 Ice* Ice::clone() const {
-	return new Ice(*this);	
+	return new Ice( *this );	
 }
 
 void Ice::use( ICharacter & target ) {
@@ -46,14 +53,48 @@ void Ice::use( ICharacter & target ) {
 Cure::Cure( void ) {
 	type = "cure";
 }
+Cure::~Cure( void ) {}
 
-Cure* Cure::clone() const {
-	return new Cure(*this);	
+Cure * Cure::clone() const {
+	return new Cure( *this );	
 }
 
 void Cure::use( ICharacter & target ) {
 	std::cout << "* heals " << target.getName()<<  " wounds *" << std::endl;
 }
 
+/* meteria src */
 
+IMateriaSource::~IMateriaSource() {}
+
+MateriaSource::MateriaSource( void ) {
+	for (int i = 0; i < 4 ; i++)
+			inventory[i] = 0;
+}
+
+void MateriaSource::learnMateria( AMateria * m ) {
+	for (int i = 0; i < 4 ; i++) {
+		if (!inventory[i]) {
+			inventory[i] = m;
+			return ;
+		}
+	}
+}
+
+AMateria* MateriaSource::createMateria(std::string const & type) {
+	for (int i = 0; i < 4 ; i++) {
+		if (inventory[i] && inventory[i]->getType() == type)
+			return inventory[i]->clone();
+	}
+	return 0;
+}
+
+
+MateriaSource::~MateriaSource() { 
+	for (int i = 0; i < 4 ; i++) {
+		if (inventory[i]) {
+			delete inventory[i];
+		}
+	}
+}
 
