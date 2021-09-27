@@ -1,11 +1,11 @@
 #include "Bureaucrat.hpp"
 /* #include "animal.hpp" */
 #include <iostream>
+
 int main() {
 	try {
-		Bureaucrat b = Bureaucrat("bob", 1);
-		Bureaucrat v = Bureaucrat("bob", 150);
-		std::cout << v << std::endl ;
+		Bureaucrat b("bob", 1);
+		std::cout << b << std::endl;
 		--b;
 	}
 	catch (std::exception & e) {

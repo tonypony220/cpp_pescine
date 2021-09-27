@@ -68,7 +68,7 @@ void Cure::use( ICharacter & target ) {
 IMateriaSource::~IMateriaSource() {}
 
 MateriaSource::MateriaSource( void ) {
-	for (int i = 0; i < 4 ; i++)
+	for ( int i = 0; i < 4 ; i++ )
 			inventory[i] = 0;
 }
 

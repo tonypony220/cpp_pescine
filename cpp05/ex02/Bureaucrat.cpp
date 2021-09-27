@@ -22,11 +22,11 @@ std::string Bureaucrat::getName( void ) const {
 	return name;
 }
 
-bool		Bureaucrat::valid_range( void ) const {
+void		Bureaucrat::valid_range( void ) const {
 	if (grade > 150)
 		throw Bureaucrat::GradeTooHighException();
 	if (grade < 1)
-		throw Bureaucrat::GradeTooLowExceptiona();
+		throw Bureaucrat::GradeTooLowException();
 }
 
 int			Bureaucrat::getGrade( void ) const {
@@ -43,6 +43,26 @@ const Bureaucrat & Bureaucrat::operator--() {
 	grade--;
 	valid_range();
 	return *this;		
+}
+
+void Bureaucrat::signForm( Form & f ) { 
+	try {
+		f.beSigned(*this);	
+		std::cout << getName() << " signes " << f.getName() << std::endl; 
+	}
+	catch (std::exception & e) {
+		std::cout << getName() << " can not sign " << f.getName() << " because " << e.what() << std::endl; 
+	}
+}
+
+void Bureaucrat::executeForm(Form const & f) {
+	try {
+		f.execute(*this);	
+		std::cout << getName() << " executes " << f.getName() << std::endl; 
+	}
+	catch (std::exception & e) {
+		std::cout << getName() << " can not execute " << f.getName() << " because " << e.what() << std::endl; 
+	}
 }
 
 std::ostream & operator<<( std::ostream & o, Bureaucrat & bur ) {
