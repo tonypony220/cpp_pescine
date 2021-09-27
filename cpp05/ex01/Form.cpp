@@ -5,9 +5,9 @@ Form::Form( void ) {}
 
 Form::Form( std::string new_name, int grade_exec , int grade_sign )
 	: name(new_name),
-	grade_sign(grade_sign) , 
-	grade_exec(grade_exec),
-	been_signed(false) {
+	  grade_sign(grade_sign) , 
+	  grade_exec(grade_exec),
+	  been_signed(false) {
 		valid_range();
 }
 
@@ -55,8 +55,8 @@ void		Form::beSigned( Bureaucrat & b ) {
 }
 
 
-const char* Form::GradeTooHighException::what() const throw() { return "grade more 150"; }
-const char* Form::GradeTooLowException::what() const throw() { return "grade less 1"; }
+const char* Form::GradeTooHighException::what() const throw() { return "grade more than requered"; }
+const char* Form::GradeTooLowException::what() const throw() { return "grade less requered"; }
 
 
 std::ostream & operator<<( std::ostream & o, Form & form ) {

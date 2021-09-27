@@ -3,8 +3,8 @@
 #include "Form.hpp"
 #include <fstream>
 
-#ifndef CLASS_SHRUBBERYCREATIONFORM
-# define CLASS_SHRUBBERYCREATIONFORM
+#ifndef CLASS_PRESIDENTIALPARDONFORM
+# define CLASS_PRESIDENTIALPARDONFORM
 class Bureaucrat;
 
 class PresidentialPardonForm : public Form {

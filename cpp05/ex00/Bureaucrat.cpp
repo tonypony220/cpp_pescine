@@ -17,12 +17,11 @@ const Bureaucrat & Bureaucrat::operator=( const Bureaucrat & other ) {
 
 Bureaucrat::~Bureaucrat( void ) {}
 
-
 std::string Bureaucrat::getName( void ) const {
 	return name;
 }
 
-bool		Bureaucrat::valid_range( void ) const {
+void		Bureaucrat::valid_range( void ) const {
 	if (grade > 150)
 		throw Bureaucrat::GradeTooHighException();
 	if (grade < 1)

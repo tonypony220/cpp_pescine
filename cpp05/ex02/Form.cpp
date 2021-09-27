@@ -65,8 +65,8 @@ void 		Form::execute( Bureaucrat const & executor ) const {
  	executing();	
 }
 
-const char* Form::GradeTooHighException::what() const throw() { return "grade more 150"; }
-const char* Form::GradeTooLowException::what() const throw() { return "grade less 1"; }
+const char* Form::GradeTooHighException::what() const throw() { return "grade more then requered"; }
+const char* Form::GradeTooLowException::what() const throw() { return "grade less then requered"; }
 const char* Form::FormNotSigned::what() const throw() { return "form not signed"; }
 
 

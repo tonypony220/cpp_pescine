@@ -1,11 +1,9 @@
-SRCS	=   Bureaucrat.cpp  main.cpp Form.cpp ShrubberyCreationForm.cpp \
-			RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRCS	=   materia.cpp ichar.cpp main.cpp
 OBJS	=	${SRCS:.cpp=.o}
 CFLAGS	=   -O0 -Wall -Wextra -Werror --std=c++98 # -fsanitize=address
 CC		=	clang++
 RM		=	-rm	-f
-HEAD	=	Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp \
-			RobotomyRequestForm.hpp PresidentialPardonForm.hpp
+HEAD	=	materia.hpp ichar.hpp
 NAME	=	out
 
 %.o: %.cpp $(HEAD)
@@ -15,6 +13,9 @@ ${NAME}: ${OBJS}
 		$(CC) ${CFLAGS} ${OBJS} -o ${NAME}
 
 all: ${NAME}
+
+l:
+	leaks -atExit -- ./${NAME}
 
 clean:
 	rm -f $(OBJS)
