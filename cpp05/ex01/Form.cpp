@@ -48,7 +48,7 @@ void		Form::valid_range( void ) const {
 }
 
 void		Form::beSigned( Bureaucrat & b ) {
-	if ( b.getGrade() > getGradeSign() )
+	if ( b.getGrade() < getGradeSign() )
 		been_signed = true;		
 	else
 		throw Form::GradeTooLowException();

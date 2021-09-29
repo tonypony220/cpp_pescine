@@ -7,6 +7,7 @@
 
 #ifndef CLASS_INTERN
 # define CLASS_INTERN
+#define ARR_LEN 3
 
 class Bureaucrat;
 

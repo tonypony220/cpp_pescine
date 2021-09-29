@@ -21,9 +21,9 @@ class Bureaucrat {
 	Bureaucrat( std::string , int grade = 150 );	
 	virtual ~Bureaucrat( void );	
 
-	void		valid_range( void ) const ;
-	std::string getName( void ) const ;
-	int			getGrade( void ) const ;
+	void		valid_range( void ) const;
+	std::string getName( void ) const;
+	int			getGrade( void ) const;
 
 	const Bureaucrat & operator--();
 	const Bureaucrat & operator++();

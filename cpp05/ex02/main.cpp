@@ -6,31 +6,36 @@
 #include <iostream>
 
 int main() {
-	try {
-		Bureaucrat b("bob", 1);
-		Bureaucrat v("snob", 150);
-		std::cout << v << std::endl ;
-		--b;
-	}
-	catch (std::exception & e) {
-		std::cout << e.what() << std::endl ;
-	}
 	Bureaucrat b("bob", 10);
 	Bureaucrat v("jop", 147);
-	ShrubberyCreationForm f1("declaration of penis"); 
-	ShrubberyCreationForm f2("declaration of some shit"); 
-	RobotomyRequestForm f3("robocop"); 
-	PresidentialPardonForm f4("employee"); 
-	b.signForm(f1);
+	ShrubberyCreationForm f2("declaration"); 
+	RobotomyRequestForm f3("robocop form"); 
+	PresidentialPardonForm f4("employee form"); 
+
 	v.signForm(f2);
-	b.signForm(f3);
-	b.signForm(f4);
-	b.executeForm(f1);	
-	v.executeForm(f1);
+	v.signForm(f3);
+	v.signForm(f4);
+
 	b.executeForm(f2);	
 	b.executeForm(f3);
-	v.executeForm(f4);
 	b.executeForm(f4);
-	std::cout << v << std::endl ;
+
+	v.executeForm(f2);	
+	v.executeForm(f3);
+	v.executeForm(f4);
+
+	b.signForm(f2);
+	b.signForm(f3);
+	b.signForm(f4);
+
+
+	b.executeForm(f2);	
+	b.executeForm(f3);
+	b.executeForm(f4);
+
+	v.executeForm(f2);	
+	v.executeForm(f3);
+	v.executeForm(f4);
+
 	
 }

@@ -11,4 +11,29 @@ int main() {
 	catch (std::exception & e) {
 		std::cout << e.what() << std::endl ;
 	}
+	try {
+		Bureaucrat b("bob", 149);
+		++b;
+		++b;
+		std::cout << b << std::endl;
+	}
+	catch (std::exception & e) {
+		std::cout << e.what() << std::endl ;
+	}
+
+	try {
+		Bureaucrat b("bob", 160);
+		std::cout << b << std::endl;
+	}
+	catch (std::exception & e) {
+		std::cout << e.what() << std::endl ;
+	}
+
+	try {
+		Bureaucrat b("bob", 160);
+		std::cout << b << std::endl;
+	}
+	catch (std::exception & e) {
+		std::cout << e.what() << std::endl ;
+	}
 }

@@ -55,6 +55,7 @@ void		Form::beSigned( Bureaucrat & b ) {
 }
 
 
+
 void		Form::executing( void ) const {}
 
 void 		Form::execute( Bureaucrat const & executor ) const {

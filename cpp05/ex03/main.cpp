@@ -7,35 +7,48 @@
 /* #include "animal.hpp" */
 #include <iostream>
 int main() {
-	try {
-		Bureaucrat b("bob", 1);
-		Bureaucrat v("bob", 150);
-		std::cout << v << std::endl ;
-		--b;
-	}
-	catch (std::exception & e) {
-		std::cout << e.what() << std::endl ;
-	}
-	Bureaucrat b("bob", 10);
-	Bureaucrat v("jop", 147);
-	ShrubberyCreationForm f1("declaration of penis"); 
-	ShrubberyCreationForm f2("declaration of some shit"); 
-	RobotomyRequestForm f3("robocop"); 
-	std::cout << f1.getGradeSign() << std::endl;
-	b.signForm(f1);
-	v.signForm(f2);
-	b.signForm(f3);
-	b.executeForm(f1);	
-	v.executeForm(f1);
-	b.executeForm(f2);	
-	b.executeForm(f3);
-	std::cout << v << std::endl ;
 
 	Intern someRandomIntern;
-	Form* rrf;
-	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-	b.signForm(*rrf);
-	b.executeForm(*rrf);
-	delete rrf;
-	
+	Bureaucrat b("bob", 10);
+	Bureaucrat v("jop", 147);
+
+	/* std::string form_names[3] = {"robotomy reques", "presidential pardon", "shrubbery creation"}; */
+	Form * f1 = someRandomIntern.makeForm("dddddd", "Bender");
+	if (f1 == NULL)
+		std::cout << "ok" << std::endl; 
+	else
+		std::cout << "fail" << std::endl; 
+
+	Form * f4 = someRandomIntern.makeForm("shrubbery creation", "BOOB");
+	Form * f2 = someRandomIntern.makeForm("robotomy request", "Bender");
+	Form * f3 = someRandomIntern.makeForm("presidential pardon", "YO");
+
+	v.signForm(*f2);
+	v.signForm(*f3);
+	v.signForm(*f4);
+
+	b.executeForm(*f2);	
+	b.executeForm(*f3);
+	b.executeForm(*f4);
+
+	v.executeForm(*f2);	
+	v.executeForm(*f3);
+	v.executeForm(*f4);
+
+	b.signForm(*f2);
+	b.signForm(*f3);
+	b.signForm(*f4);
+
+
+	b.executeForm(*f2);	
+	b.executeForm(*f3);
+	b.executeForm(*f4);
+
+	v.executeForm(*f2);	
+	v.executeForm(*f3);
+	v.executeForm(*f4);
+
+	delete f2;
+	delete f3;
+	delete f4;
 }

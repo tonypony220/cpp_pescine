@@ -88,6 +88,7 @@ void ShrubberyCreationForm::executing( void ) const {
 /* const char* ShrubberyCreationForm::GradeTooLowException::what() const throw() { return "grade less 1"; } */
 
 
+
 std::ostream & operator<<( std::ostream & o, ShrubberyCreationForm & form ) {
 	o << form.getName();
 	o << ", been signed: " << form.beenSigned();
