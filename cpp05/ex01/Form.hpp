@@ -8,7 +8,7 @@ class Bureaucrat;
 class Form {
 
   private:
-	const std::string name;
+	std::string name;
 	int grade_sign;
 	int grade_exec;
 	bool been_signed;

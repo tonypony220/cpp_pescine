@@ -6,12 +6,13 @@ Bureaucrat::Bureaucrat( std::string new_name, int grade ) : name(new_name), grad
 	valid_range();
 }
 
-Bureaucrat::Bureaucrat( const Bureaucrat & copy ) {
-	*this = copy;
+Bureaucrat::Bureaucrat( const Bureaucrat & copy ) : name(copy.name), grade(copy.grade) {
+	valid_range();
 }
 
 const Bureaucrat & Bureaucrat::operator=( const Bureaucrat & other ) {
 	grade = other.grade;
+	throw Bureaucrat::Forbidden();
 	return *this;	
 }
 
@@ -24,9 +25,9 @@ std::string Bureaucrat::getName( void ) const {
 
 void		Bureaucrat::valid_range( void ) const {
 	if (grade > 150)
-		throw Bureaucrat::GradeTooHighException();
-	if (grade < 1)
 		throw Bureaucrat::GradeTooLowException();
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
 }
 
 int			Bureaucrat::getGrade( void ) const {
@@ -34,13 +35,13 @@ int			Bureaucrat::getGrade( void ) const {
 }
 
 const Bureaucrat & Bureaucrat::operator++() { 
-	grade++;
+	grade--;
 	valid_range();
 	return *this;		
 }
 
 const Bureaucrat & Bureaucrat::operator--() { 
-	grade--;
+	grade++;
 	valid_range();
 	return *this;		
 }
@@ -61,3 +62,6 @@ std::ostream & operator<<( std::ostream & o, Bureaucrat & bur ) {
 	return (o);
 }	
 
+const char* Bureaucrat::GradeTooHighException::what() const throw() { return "grade more than requered"; }
+const char* Bureaucrat::GradeTooLowException::what() const throw() { return "grade less requered"; }
+const char* Bureaucrat::Forbidden::what() const throw() { return "assignation not allowed"; }

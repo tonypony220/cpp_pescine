@@ -12,10 +12,10 @@ class Bureaucrat {
 
 	/* below private cause can't be used */
 	Bureaucrat();	
-	Bureaucrat( const Bureaucrat & copy );	
-	const Bureaucrat & operator=( const Bureaucrat & other );	
 
   public:
+	Bureaucrat( const Bureaucrat & copy );	
+	const Bureaucrat & operator=( const Bureaucrat & other );	
 	Bureaucrat( std::string , int grade = 150 );	
 	virtual ~Bureaucrat( void );	
 
@@ -27,10 +27,10 @@ class Bureaucrat {
 	const Bureaucrat & operator++();
 
 	class GradeTooHighException : public std::exception {
-		/* virtual const char* what() const throw(); */
-	};
-	class GradeTooLowExceptiona : public std::exception {
-	};
+		/* virtual const char* what() const throw(); */ };
+
+	class GradeTooLowExceptiona : public std::exception {};
+	class Forbidden : public std::exception {};
 };
 
 

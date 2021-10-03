@@ -11,14 +11,16 @@ Form::Form( std::string new_name, int grade_exec , int grade_sign )
 		valid_range();
 }
 
-/* wtf method */
 Form::Form( const Form & copy ) {
 	*this = copy;
 }
 
-/* wtf method */
 const Form & Form::operator=( const Form & other ) {
-	return other;	
+	name = other.name;
+	grade_sign = other.grade_sign;
+	grade_exec = other.grade_exec;
+	been_signed = other.been_signed;
+	return *this;	
 }
 
 Form::~Form( void ) {}
@@ -42,9 +44,9 @@ int			Form::getGradeExec( void ) const {
 
 void		Form::valid_range( void ) const {
 	if ( grade_exec > 150 || grade_sign > 150 ) 
-		throw Form::GradeTooHighException();
-	if ( grade_exec < 1 || grade_sign < 1 ) 
 		throw Form::GradeTooLowException();
+	if ( grade_exec < 1 || grade_sign < 1 ) 
+		throw Form::GradeTooHighException();
 }
 
 void		Form::beSigned( Bureaucrat & b ) {
