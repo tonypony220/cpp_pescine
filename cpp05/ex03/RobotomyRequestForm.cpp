@@ -2,60 +2,26 @@
 #include "Bureaucrat.hpp"
 #include "RobotomyRequestForm.hpp"
 #include <unistd.h>
+#include <stdlib.h>
 
 RobotomyRequestForm::RobotomyRequestForm( void ) {}
 
-RobotomyRequestForm::RobotomyRequestForm( std::string new_name ) : 
-									 Form( new_name ), 
-									 name(new_name),
-									 grade_sign(72), 
-									 grade_exec(45),
-									 been_signed(false) {
-		valid_range();
-}
+RobotomyRequestForm::RobotomyRequestForm( std::string new_name )
+		: Form( new_name, 45, 72) {}
 
-/* wtf method */
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & copy ) {
 	*this = copy;
 }
 
-/* wtf method */
+//https://edux.pjwstk.edu.pl/mat/260/lec/PRG2CPP_files/node123.html
 const RobotomyRequestForm & RobotomyRequestForm::operator=( const RobotomyRequestForm & other ) {
-	return other;	
+	this->Form::operator=(other);
+//	(Form&)(*this) = other; //: also valid but should be this: static_cast<Form&>(*this) = other;
+	return *this;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm( void ) {}
 
-
-std::string RobotomyRequestForm::getName( void ) const {
-	return name;
-}
-
-bool		RobotomyRequestForm::beenSigned( void ) const {
-	return been_signed;
-}
-
-int			RobotomyRequestForm::getGradeSign( void ) const {
-	return grade_sign;
-}
-
-int			RobotomyRequestForm::getGradeExec( void ) const {
-	return grade_exec;
-}
-
-void		RobotomyRequestForm::valid_range( void ) const {
-	if ( grade_exec > 150 || grade_sign > 150 ) 
-		throw Form::GradeTooHighException();
-	if ( grade_exec < 1 || grade_sign < 1 ) 
-		throw Form::GradeTooLowException();
-}
-
-void		RobotomyRequestForm::beSigned( Bureaucrat & b ) {
-	if ( b.getGrade() < getGradeSign() )
-		been_signed = true;
-	else
-		throw RobotomyRequestForm::GradeTooLowException();
-}
 
 void RobotomyRequestForm::executing( void ) const {
 	/* system("say weeweeweeweeweeee"); */	
@@ -66,28 +32,8 @@ void RobotomyRequestForm::executing( void ) const {
 	std::cout << "\a" << std::endl;
 	usleep(100000);
 	std::cout << "\a" << std::endl;
-	std::cout << name << " has been robotomized successfully fifty percent of the time" << std::endl;
-	/* std::string words = "say weeweeweeweeweeee" + name + " has been robotomized successfully fifty percent of the time"; */
-	/* system(words.c_str()); */	
+	if (rand() % 2)
+		std::cout << getName() << " has been robotomized successfully" << std::endl;
+	else
+		std::cout << getName() << " robotomized failure " << std::endl;
 }
-
-/* void 		RobotomyRequestForm::execute( Bureaucrat const & executor ) const { */
-/* 	if ( executor.getGrade() > getGradeExec() ) */
-/* 		throw Form::GradeTooLowException(); */
-/* 	if (!beenSigned()) */
-/* 		throw Form::FormNotSigned(); */
-/*  	executing(); */	
-/* } */
-
-/* const char* RobotomyRequestForm::GradeTooHighException::what() const throw() { return "grade more 150"; } */
-/* const char* RobotomyRequestForm::GradeTooLowException::what() const throw() { return "grade less 1"; } */
-
-
-std::ostream & operator<<( std::ostream & o, RobotomyRequestForm & form ) {
-	o << form.getName();
-	o << ", been signed: " << form.beenSigned();
-	o << ", form grade sign: " << form.getGradeSign();
-	o << ", form grade execute: " << form.getGradeExec() << std::endl;
-	return (o);
-}	
-

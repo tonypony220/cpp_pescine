@@ -23,16 +23,21 @@ class Form {
 	virtual ~Form( void );
 
 	bool		beenSigned( void ) const ;
-	virtual void		valid_range( void )  const ;
-	virtual std::string getName( void ) 	 const ;
-	virtual int			getGradeSign( void ) const ;
-	virtual int			getGradeExec( void ) const ;
-	virtual void 		execute( Bureaucrat const & executor ) const;
+	void		setSigned( bool ) ;
+	void		valid_range( void )  const ;
+	std::string getName( void ) 	 const ;
+	int			getGradeSign( void ) const ;
+	int			getGradeExec( void ) const ;
+	void 		execute( Bureaucrat const & executor ) const;
+
+	void 		setName( std::string ) ;
+	void		setGradeSign( int ) ;
+	void		setGradeExec( int ) ;
+
+	void		beSigned( Bureaucrat & b );
+
+
 	virtual void		executing( void ) const ;
-	virtual void 		setName( std::string ) ;
-	virtual void		setGradeSign( int ) ;
-	virtual void		setGradeExec( int ) ;
-	virtual void		beSigned( Bureaucrat & b );
 
 	class GradeTooHighException : public std::exception {
 		virtual const char* what() const throw();

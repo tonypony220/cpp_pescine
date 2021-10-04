@@ -14,13 +14,16 @@ class Bureaucrat;
 class Intern {
 
   public:
-
-	Intern();	
+	Intern();
 	const Intern & operator=( const Intern & other );	
 	Intern( const Intern & copy );
 	virtual ~Intern( void );
 
-	static Form * makeForm(const std::string & f, const std::string & target);
+	Form * makeForm(const std::string & f, const std::string & target);
+
+	Form * createShrub(std::string target) ;
+	Form * createRobot(std::string target) ;
+	Form * createPres(std::string target) ;
 
 };
 

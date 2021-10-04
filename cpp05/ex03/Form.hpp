@@ -14,26 +14,30 @@ class Form {
 	bool been_signed;
 
 	/* below private cause can't be used */
-	const Form & operator=( const Form & other );	
-	Form( const Form & copy );
 
   public:
+	Form();
+	const Form & operator=( const Form & other );
+	Form( const Form & copy );
+	Form( std::string, int grade_exec = 149, int grade_sign = 149 );
+	virtual ~Form( void );
 
-	Form();	
-	Form( std::string, int grade_exec = 149, int grade_sign = 149 );	
-	virtual ~Form( void );	
+	bool		beenSigned( void ) const ;
+	void		setSigned( bool ) ;
+	void		valid_range( void )  const ;
+	std::string getName( void ) 	 const ;
+	int			getGradeSign( void ) const ;
+	int			getGradeExec( void ) const ;
+	void 		execute( Bureaucrat const & executor ) const;
 
-	virtual bool		beenSigned() const ;
-	virtual void		beSigned( Bureaucrat & b );
-	virtual void		valid_range( void )  const ;
-	virtual std::string getName( void ) 	 const ;
-	virtual int			getGradeSign( void ) const ;
-	virtual int			getGradeExec( void ) const ;
-	virtual void 		execute( Bureaucrat const & executor ) const;
+	void 		setName( std::string ) ;
+	void		setGradeSign( int ) ;
+	void		setGradeExec( int ) ;
+
+	void		beSigned( Bureaucrat & b );
+
+
 	virtual void		executing( void ) const ;
-	virtual void 		setName( std::string ) ;
-	virtual void		setGradeSign( int ) ;
-	virtual void		setGradeExec( int ) ;
 
 	class GradeTooHighException : public std::exception {
 		virtual const char* what() const throw();

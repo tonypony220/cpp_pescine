@@ -8,38 +8,47 @@
 int main() {
 	Bureaucrat b("bob", 10);
 	Bureaucrat v("jop", 147);
-	ShrubberyCreationForm f2("declaration"); 
-	RobotomyRequestForm f3("robocop form"); 
-	PresidentialPardonForm f4("employee form");
+	ShrubberyCreationForm shrub("F8");
+	RobotomyRequestForm robo("robocop form");
+	PresidentialPardonForm pres("employee form");
 
-	ShrubberyCreationForm f5(f2);
-	std::cout << "COPY: " << f2 << std::endl;
+	ShrubberyCreationForm f5(shrub);
+	f5.setName("HOBA");
+
+	std::cout << "COPY: " << shrub << std::endl;
 	std::cout << "COPY: " << f5 << std::endl;
 
-	v.signForm(f2);
-	v.signForm(f3);
-	v.signForm(f4);
+	v.signForm(shrub);
+	v.signForm(robo);
+	v.signForm(pres);
 
-	b.executeForm(f2);	
-	b.executeForm(f3);
-	b.executeForm(f4);
+	b.executeForm(shrub);
+	b.executeForm(robo);
+	b.executeForm(pres);
 
-	v.executeForm(f2);	
-	v.executeForm(f3);
-	v.executeForm(f4);
+	v.executeForm(shrub);
+	v.executeForm(robo);
+	v.executeForm(pres);
 
-	b.signForm(f2);
-	b.signForm(f3);
-	b.signForm(f4);
+	b.signForm(shrub);
+	b.signForm(robo);
+	b.signForm(pres);
 
 
-	b.executeForm(f2);	
-	b.executeForm(f3);
-	b.executeForm(f4);
+	b.executeForm(shrub);
 
-	v.executeForm(f2);	
-	v.executeForm(f3);
-	v.executeForm(f4);
+	b.executeForm(robo);
+	b.executeForm(robo);
+	b.executeForm(robo);
+	b.executeForm(robo);
+	b.executeForm(robo);
+	b.executeForm(robo);
+
+	b.executeForm(pres);
+
+	v.executeForm(shrub);
+	v.executeForm(robo);
+	v.executeForm(pres);
 
 	
 }

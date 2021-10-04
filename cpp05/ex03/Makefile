@@ -22,6 +22,7 @@ clean:
 
 fclean:	clean
 	rm -f $(NAME)
+	rm *_shruberry
 
 re:		fclean all
 

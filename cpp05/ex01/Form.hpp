@@ -28,6 +28,7 @@ class Form {
 	std::string getName( void ) 	 const ;
 	int			getGradeSign( void ) const ;
 	int			getGradeExec( void ) const ;
+
 	void 		setName( std::string ) ;
 	void		setGradeSign( int ) ;
 	void		setGradeExec( int ) ;

@@ -2,69 +2,26 @@
 #include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
 
+
 PresidentialPardonForm::PresidentialPardonForm( void ) {}
 
-PresidentialPardonForm::PresidentialPardonForm( std::string new_name ) : 
-									 Form( new_name ), 
-									 name(new_name),
-									 grade_sign(145), 
-									 grade_exec(137),
-									 been_signed(false) {
-		valid_range();
-}
+PresidentialPardonForm::PresidentialPardonForm( std::string new_name )
+		: Form( new_name, 5, 25) {}
 
-/* wtf method */
 PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & copy ) {
 	*this = copy;
 }
 
-/* wtf method */
+//https://edux.pjwstk.edu.pl/mat/260/lec/PRG2CPP_files/node123.html
 const PresidentialPardonForm & PresidentialPardonForm::operator=( const PresidentialPardonForm & other ) {
-	return other;	
+	this->Form::operator=(other);
+//	(Form&)(*this) = other; //: also valid but should be this: static_cast<Form&>(*this) = other;
+	return *this;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm( void ) {}
 
-
-std::string PresidentialPardonForm::getName( void ) const {
-	return name;
-}
-
-bool		PresidentialPardonForm::beenSigned( void ) const {
-	return been_signed;
-}
-
-int			PresidentialPardonForm::getGradeSign( void ) const {
-	return grade_sign;
-}
-
-int			PresidentialPardonForm::getGradeExec( void ) const {
-	return grade_exec;
-}
-
-void		PresidentialPardonForm::valid_range( void ) const {
-	if ( grade_exec > 150 || grade_sign > 150 ) 
-		throw Form::GradeTooHighException();
-	if ( grade_exec < 1 || grade_sign < 1 ) 
-		throw Form::GradeTooLowException();
-}
-
-void		PresidentialPardonForm::beSigned( Bureaucrat & b ) {
-	if ( b.getGrade() < getGradeSign() )
-		been_signed = true;
-	else
-		throw PresidentialPardonForm::GradeTooLowException();
-}
-
 void PresidentialPardonForm::executing( void ) const {
-	std::cout << name << " has been pardoned by Zafod Beeblebrox" << std::endl;
+	std::cout << getName() << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
-
-std::ostream & operator<<( std::ostream & o, PresidentialPardonForm & form ) {
-	o << form.getName();
-	o << ", been signed: " << form.beenSigned();
-	o << ", form grade sign: " << form.getGradeSign();
-	o << ", form grade execute: " << form.getGradeExec() << std::endl;
-	return (o);
-}	
 

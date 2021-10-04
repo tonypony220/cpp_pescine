@@ -3,26 +3,29 @@
 
 Form::Form( void ) {}
 
-Form::Form( std::string new_name, int grade_exec , int grade_sign )
-	: name(new_name),
-	grade_sign(grade_sign) , 
+Form::Form( std::string new_name, int grade_exec, int grade_sign )
+	:
+	name(new_name),
+	grade_sign(grade_sign),
 	grade_exec(grade_exec),
 	been_signed(false) {
 		valid_range();
 }
 
-/* wtf method */
 Form::Form( const Form & copy ) {
 	*this = copy;
 }
 
-/* wtf method */
 const Form & Form::operator=( const Form & other ) {
-	return other;	
+//	std::cout << "Form:: assignaltion called" << std::endl;
+	setName(other.getName());
+	setGradeExec(other.getGradeExec());
+	setGradeSign(other.getGradeSign());
+	setSigned(other.beenSigned());
+	return *this;
 }
 
 Form::~Form( void ) {}
-
 
 std::string Form::getName( void ) const {
 	return name;
@@ -32,6 +35,8 @@ bool			Form::beenSigned( void ) const {
 	return been_signed;
 }
 
+void			Form::setSigned( bool b ) { been_signed = b; }
+
 int			Form::getGradeSign( void ) const {
 	return grade_sign;
 }
@@ -40,23 +45,25 @@ int			Form::getGradeExec( void ) const {
 	return grade_exec;
 }
 
-void 		Form::setName( std::string n ) { name = n; }
+void 		Form::setName( const std::string n ) {
+	name = n;
+}
 
 void		Form::setGradeSign( int g ) {
 	grade_sign = g;
-	valid_range();
+//	valid_range();
 }
 
 void		Form::setGradeExec( int g ) {
 	grade_exec = g;
-	valid_range();
+//	valid_range();
 }
 
 void		Form::valid_range( void ) const {
-	if ( grade_exec > 150 || grade_sign > 150 ) 
-		throw Form::GradeTooHighException();
-	if ( grade_exec < 1 || grade_sign < 1 ) 
+	if ( grade_exec > 150 || grade_sign > 150 )
 		throw Form::GradeTooLowException();
+	if ( grade_exec < 1 || grade_sign < 1 )
+		throw Form::GradeTooHighException();
 }
 
 void		Form::beSigned( Bureaucrat & b ) {
@@ -65,7 +72,6 @@ void		Form::beSigned( Bureaucrat & b ) {
 	else
 		throw Form::GradeTooLowException();
 }
-
 
 
 void		Form::executing( void ) const {}
