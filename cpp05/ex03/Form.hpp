@@ -8,7 +8,7 @@ class Bureaucrat;
 class Form {
 
   private:
-	const std::string name;
+	std::string name;
 	int grade_sign;
 	int grade_exec;
 	bool been_signed;
@@ -31,6 +31,9 @@ class Form {
 	virtual int			getGradeExec( void ) const ;
 	virtual void 		execute( Bureaucrat const & executor ) const;
 	virtual void		executing( void ) const ;
+	virtual void 		setName( std::string ) ;
+	virtual void		setGradeSign( int ) ;
+	virtual void		setGradeExec( int ) ;
 
 	class GradeTooHighException : public std::exception {
 		virtual const char* what() const throw();

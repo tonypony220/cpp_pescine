@@ -24,6 +24,7 @@ class Bureaucrat {
 	void		valid_range( void ) const;
 	std::string getName( void ) const;
 	int			getGrade( void ) const;
+	void		setGrade( int );
 
 	const Bureaucrat & operator--();
 	const Bureaucrat & operator++();

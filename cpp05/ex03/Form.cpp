@@ -40,6 +40,18 @@ int			Form::getGradeExec( void ) const {
 	return grade_exec;
 }
 
+void 		Form::setName( std::string n ) { name = n; }
+
+void		Form::setGradeSign( int g ) {
+	grade_sign = g;
+	valid_range();
+}
+
+void		Form::setGradeExec( int g ) {
+	grade_exec = g;
+	valid_range();
+}
+
 void		Form::valid_range( void ) const {
 	if ( grade_exec > 150 || grade_sign > 150 ) 
 		throw Form::GradeTooHighException();

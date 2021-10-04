@@ -2,7 +2,7 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm( void ) {}
+//ShrubberyCreationForm::ShrubberyCreationForm( void ) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm( std::string new_name ) : 
 									 Form( new_name ), 
@@ -13,15 +13,15 @@ ShrubberyCreationForm::ShrubberyCreationForm( std::string new_name ) :
 		valid_range();
 }
 
-/* wtf method */
-ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & copy ) {
-	*this = copy;
-}
-
-/* wtf method */
-const ShrubberyCreationForm & ShrubberyCreationForm::operator=( const ShrubberyCreationForm & other ) {
-	return other;	
-}
+///* wtf method */
+//ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & copy ) {
+//	*this = copy;
+//}
+//
+///* wtf method */
+//const ShrubberyCreationForm & ShrubberyCreationForm::operator=( const ShrubberyCreationForm & other ) {
+//	return other;
+//}
 
 ShrubberyCreationForm::~ShrubberyCreationForm( void ) {}
 
@@ -42,11 +42,15 @@ int			ShrubberyCreationForm::getGradeExec( void ) const {
 	return grade_exec;
 }
 
+void 		ShrubberyCreationForm::setName( const std::string n ) {
+	name = n;
+}
+
 void		ShrubberyCreationForm::valid_range( void ) const {
-	if ( grade_exec > 150 || grade_sign > 150 ) 
-		throw Form::GradeTooHighException();
-	if ( grade_exec < 1 || grade_sign < 1 ) 
+	if ( grade_exec > 150 || grade_sign > 150 )
 		throw Form::GradeTooLowException();
+	if ( grade_exec < 1 || grade_sign < 1 )
+		throw Form::GradeTooHighException();
 }
 
 void		ShrubberyCreationForm::beSigned( Bureaucrat & b ) {
@@ -58,6 +62,10 @@ void		ShrubberyCreationForm::beSigned( Bureaucrat & b ) {
 
 void ShrubberyCreationForm::executing( void ) const {
 	std::ofstream out( name + "_shrubbery" );
+	if (!out) {
+		std::cout << "error: filerror" << std::endl;
+		return;
+	}
 	out << ("\
 	   '.,\n\
         'b      *\n\

@@ -33,6 +33,11 @@ int			Bureaucrat::getGrade( void ) const {
 	return grade;
 }
 
+void		Bureaucrat::setGrade( int g ) {
+	grade = g;
+	valid_range();
+}
+
 const Bureaucrat & Bureaucrat::operator++() { 
 	grade--;
 	valid_range();

@@ -1,7 +1,7 @@
 SRCS	=   Bureaucrat.cpp  main.cpp Form.cpp ShrubberyCreationForm.cpp \
 			RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJS	=	${SRCS:.cpp=.o}
-CFLAGS	=   -O0 -Wall -Wextra -Werror --std=c++98 # -fsanitize=address
+CFLAGS	=   -O0 #-Wall -Wextra -Werror --std=c++98 # -fsanitize=address
 CC		=	clang++
 RM		=	-rm	-f
 HEAD	=	Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp \

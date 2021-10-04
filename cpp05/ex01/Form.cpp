@@ -3,11 +3,12 @@
 
 Form::Form( void ) {}
 
-Form::Form( std::string new_name, int grade_exec , int grade_sign )
+Form::Form( std::string new_name, int grade_exec, int grade_sign )
 	: name(new_name),
-	  grade_sign(grade_sign) , 
+	  grade_sign(grade_sign), 
 	  grade_exec(grade_exec),
-	  been_signed(false) {
+	  been_signed(false) 
+{
 		valid_range();
 }
 
@@ -40,6 +41,18 @@ int			Form::getGradeSign( void ) const {
 
 int			Form::getGradeExec( void ) const {
 	return grade_exec;
+}
+
+void 		Form::setName( std::string n ) { name = n; }
+
+void		Form::setGradeSign( int g ) {
+	grade_sign = g;
+	valid_range();
+}
+
+void		Form::setGradeExec( int g ) {
+	grade_exec = g;
+	valid_range();
 }
 
 void		Form::valid_range( void ) const {

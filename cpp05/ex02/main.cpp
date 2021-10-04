@@ -10,7 +10,11 @@ int main() {
 	Bureaucrat v("jop", 147);
 	ShrubberyCreationForm f2("declaration"); 
 	RobotomyRequestForm f3("robocop form"); 
-	PresidentialPardonForm f4("employee form"); 
+	PresidentialPardonForm f4("employee form");
+
+	ShrubberyCreationForm f5(f2);
+	std::cout << "COPY: " << f2 << std::endl;
+	std::cout << "COPY: " << f5 << std::endl;
 
 	v.signForm(f2);
 	v.signForm(f3);
