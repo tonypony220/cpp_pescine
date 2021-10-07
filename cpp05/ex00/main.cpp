@@ -3,7 +3,7 @@
 #include <iostream>
 
 int main() {
-	try {
+	try{
 		Bureaucrat b("bob", 1);
 		std::cout << b << std::endl;
 		++b;

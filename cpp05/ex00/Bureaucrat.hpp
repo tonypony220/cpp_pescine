@@ -11,7 +11,7 @@ class Bureaucrat {
 	int grade;
 
 	/* below private cause can't be used */
-	Bureaucrat();	
+	Bureaucrat();
 
   public:
 	Bureaucrat( const Bureaucrat & copy );	

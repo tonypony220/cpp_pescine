@@ -48,8 +48,8 @@ int main() {
 	v.executeForm(*f3);
 	v.executeForm(*f4);
 
-	delete f2;
-	delete f3;
-	delete f4;
+//	delete f2;
+//	delete f3;
+//	delete f4;
 	
 }
