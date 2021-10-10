@@ -25,7 +25,11 @@ void disp_char(double n) {
 
 void disp_int(double n) {
 	std::cout << "int: ";
-	if (n != n || (n < -FLT_MAX || n > FLT_MAX) )
+	if (n != n
+		||
+		n < std::numeric_limits<double>::min()
+		||
+		n > std::numeric_limits<double>::max())
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(n) << std::endl;
@@ -53,6 +57,7 @@ void disp_double(double n) {
 int main(int argc, char** argv)
 {
 	double temp;
+
 	if (argc != 2)
 		return (1);
 	std::string str(argv[1]);
@@ -64,5 +69,7 @@ int main(int argc, char** argv)
 	disp_int(temp);
 	disp_float(temp);
 	disp_double(temp);
+
+
 	return (0);
 }
