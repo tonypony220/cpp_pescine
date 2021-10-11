@@ -14,6 +14,8 @@ ${NAME}: ${OBJS}
 
 all: ${NAME}
 
+l:
+	 leaks --atExit -- ./${NAME}
 clean:
 	rm -f $(OBJS)
 

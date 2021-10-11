@@ -1,10 +1,6 @@
 #include <iostream>
-#include <string>
-#include <cerrno>
-#include <sstream>
 #include <iomanip>
 #include <cmath>
-#include <float.h>
 
 // not used
 bool number_possibly_zero(std::string str) {
@@ -27,9 +23,14 @@ void disp_int(double n) {
 	std::cout << "int: ";
 	if (n != n
 		||
-		n < std::numeric_limits<double>::min()
+		n < -std::numeric_limits<double>::max()
 		||
-		n > std::numeric_limits<double>::max())
+		n > std::numeric_limits<double>::max()
+		||
+		static_cast<long>(n) < std::numeric_limits<int>::min()
+		||
+		static_cast<long>(n) > std::numeric_limits<int>::max()
+		)
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(n) << std::endl;
@@ -63,8 +64,9 @@ int main(int argc, char** argv)
 	std::string str(argv[1]);
 	if (str.length() == 1 && !isdigit(str[0]))
 		temp = static_cast<double>(str[0]);
-	else
+	else {
 		temp = ::strtod(argv[1], NULL);
+	}
 	disp_char(temp);
 	disp_int(temp);
 	disp_float(temp);
