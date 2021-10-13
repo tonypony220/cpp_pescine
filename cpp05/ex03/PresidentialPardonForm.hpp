@@ -20,7 +20,7 @@ class PresidentialPardonForm : public Form {
 };
 
 
-//std::ostream & operator<<( std::ostream & o, Form & form );
+//std::ostream & operator<<( std::ostream & o, PresidentialPardonForm * form );
 
 #endif
 

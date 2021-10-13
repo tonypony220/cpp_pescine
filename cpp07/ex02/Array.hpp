@@ -21,7 +21,7 @@ class Array {
 	Array( const Array & );
 	~Array( void );
 
-	T & operator[](unsigned int i);
+	T & operator[](unsigned int i) const ;
 	unsigned int size(void) const;
 
 };
@@ -30,13 +30,16 @@ template <class T>
 Array<T>::Array( void ) : ptr(0), len(0) {}
 
 template <class T>
-Array<T>::Array( unsigned int n ) : ptr( new T[n] ), len( n ) {}
+Array<T>::Array( unsigned int n ) : ptr( new T[n] ), len( n ) {
+	for (size_t i = 0; i < n; i++)
+		ptr[i] = T();
+}
 
 template <class T>
 Array<T>::Array( const Array & copy ) : ptr(0), len(0) { *this = copy; }
 
 template <class T>
-const Array<T> & Array<T>::operator=( const Array<T> & other ) {
+const Array<T> & Array<T>::operator=( const Array<T> & other ){
 	if (ptr)
 		delete [] ptr;
 	ptr = new T[other.size()];
@@ -47,7 +50,7 @@ const Array<T> & Array<T>::operator=( const Array<T> & other ) {
 }
 
 template <class T>
-T & Array<T>::operator[]( unsigned int i ) {
+T & Array<T>::operator[]( unsigned int i ) const {
 	if (i >= size())
 		throw std::logic_error("index out of range");
 	return ptr[i];

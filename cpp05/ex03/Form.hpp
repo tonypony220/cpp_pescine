@@ -51,8 +51,8 @@ class Form {
 
 };
 
-
-std::ostream & operator<<( std::ostream & o, Form & form );
+Form & form );
+std::ostream & operator<<( std::ostream & o,
 
 #endif
 
