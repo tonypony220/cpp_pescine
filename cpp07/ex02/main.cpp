@@ -3,18 +3,18 @@
 
 #define MAX_VAL 750
 
-class Awesome
-{
-	public:
-		Awesome( void ) : _n( 42 ) { return; }
-		int get( void ) const { return this->_n; }
-	private:
-		int _n;
-};
-
-std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) {
-	o << rhs.get(); return o;
-}
+//class Awesome
+//{
+//	public:
+//		Awesome( void ) : _n( 42 ) { return; }
+//		int get( void ) const { return this->_n; }
+//	private:
+//		int _n;
+//};
+//
+//std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) {
+//	o << rhs.get(); return o;
+//}
 
 
 int main(int, char**)
@@ -69,12 +69,10 @@ int main(int, char**)
 	for (int i = 0; i < 8; i++)
 		std::cout << arr[i] << std::endl;
 
-	Array<Awesome> const aww(8);
-	for (int i = 0; i < 8; i++)
-		std::cout << aww[i] << std::endl;
+//	Array<Awesome> const aww(8);
+//	for (int i = 0; i < 8; i++)
+//		std::cout << aww[i] << std::endl;
 
-	int * a = new int();
-	std::cout << *a << std::endl;
 
 	return 0;
 }

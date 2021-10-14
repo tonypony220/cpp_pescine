@@ -21,7 +21,8 @@ class Array {
 	Array( const Array & );
 	~Array( void );
 
-	T & operator[](unsigned int i) const ;
+	const T & operator[](unsigned int i) const ;
+	T & 	  operator[](unsigned int i);
 	unsigned int size(void) const;
 
 };
@@ -50,7 +51,14 @@ const Array<T> & Array<T>::operator=( const Array<T> & other ){
 }
 
 template <class T>
-T & Array<T>::operator[]( unsigned int i ) const {
+T & Array<T>::operator[]( unsigned int i ) {
+	if (i >= size())
+		throw std::logic_error("index out of range");
+	return ptr[i];
+}
+
+template <class T>
+const T & Array<T>::operator[]( unsigned int i ) const {
 	if (i >= size())
 		throw std::logic_error("index out of range");
 	return ptr[i];
