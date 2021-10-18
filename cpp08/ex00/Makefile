@@ -3,7 +3,7 @@ OBJS	=	${SRCS:.cpp=.o}
 CFLAGS	=   -O0 -Wall -Wextra -Werror --std=c++98 # -fsanitize=address
 CC		=	clang++
 RM		=	-rm	-f
-HEAD	=	easyfind.hpp
+HEAD	=	iter.hpp
 NAME	=	out
 
 %.o: %.cpp $(HEAD)
