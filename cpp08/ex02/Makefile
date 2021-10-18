@@ -1,9 +1,9 @@
-SRCS	=   main.cpp
+SRCS	=   main.cpp mutantstack.cpp
 OBJS	=	${SRCS:.cpp=.o}
 CFLAGS	=   -O0 -Wall -Wextra -Werror --std=c++98 # -fsanitize=address
 CC		=	clang++
 RM		=	-rm	-f
-HEAD	=	Array.hpp
+HEAD	=   mutantstack.hpp
 NAME	=	out
 
 %.o: %.cpp $(HEAD)
@@ -14,8 +14,6 @@ ${NAME}: ${OBJS}
 
 all: ${NAME}
 
-l:
-	 leaks --atExit -- ./${NAME}
 clean:
 	rm -f $(OBJS)
 
