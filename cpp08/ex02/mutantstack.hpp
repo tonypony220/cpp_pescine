@@ -2,9 +2,8 @@
 #include <stack>
 #pragma once
 
-// why use const in copy with that main: "Span sp = Span(5);"
-// https://stackoverflow.com/questions/18565167/non-const-lvalue-references
-// in short::: just protection from attemption change temp obj
+//https://codereview.stackexchange.com/questions/189380/example-of-adding-stl-iterator-support-to-custom-collection-class
+//https://internalpointers.com/post/writing-custom-iterators-modern-cpp
 template <class T>
 class MutantStack : public std::stack<T> {
 
