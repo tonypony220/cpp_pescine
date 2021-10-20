@@ -9,13 +9,12 @@
 template <class T>
 class MutantStack : public std::stack<T> {
 	public:
-	//	typedef typename std::deque<T>::iterator iterator;
 		typedef typename std::stack<T>::container_type::iterator iterator;
-	//	typedef typename MutantStack::container_type::iterator iterator;
-		iterator  begin( void ) { return MutantStack.container_type.begin(); }
-		iterator  end( void )   { return MutantStack.container_type.end(); }
+		iterator  begin( void ) { return std::stack<T>::c.begin(); }
+		iterator  end( void )   { return std::stack<T>::c.end(); }
 };
 
+// first version. not cool
 
 //template <class T, class Container = std::deque<T> >
 //class MutantStack : public std::stack< T, Container > {
