@@ -18,7 +18,7 @@ class Point {
 
 	~Point( void );	
 
-	void operator=( const Point & other );	
+	Point operator=( const Point & other );
 
 	const Fixed & get_x() const ;
 
@@ -26,5 +26,7 @@ class Point {
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point) ;
+
+std::ostream & operator<<( std::ostream & o, const Point & point );
 
 #endif
