@@ -1,7 +1,5 @@
-#include "ichar.hpp"
-#include "materia.hpp"
-
-ICharacter::~ICharacter() {}
+#include "Character.hpp"
+#include "AMateria.hpp"
 
 const Character & Character::operator=( const Character & other ) {
 	name = other.name;

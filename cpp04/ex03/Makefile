@@ -1,9 +1,16 @@
-SRCS	=   materia.cpp ichar.cpp main.cpp
+SRCS	=   AMateria.cpp \
+			Character.cpp \
+			Cure.cpp \
+			Ice.cpp \
+			MateriaSource.cpp \
+			main.cpp \
+			ICharacter.cpp 
+
 OBJS	=	${SRCS:.cpp=.o}
 CFLAGS	=   -O0 -Wall -Wextra -Werror --std=c++98 # -fsanitize=address
 CC		=	clang++
 RM		=	-rm	-f
-HEAD	=	materia.hpp ichar.hpp
+HEAD	=	*.hpp #materia.hpp ichar.hpp
 NAME	=	out
 
 %.o: %.cpp $(HEAD)
